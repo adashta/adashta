@@ -1,0 +1,40 @@
+{
+  "name": "adashta",
+  "version": "1.0.4",
+  "description": "A real-time messaging tool based on NodeJS that will seamlessly transfer data between different devices.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adashta/adashta.git"
+  },
+  "keywords": [
+    "nodejs",
+    "data",
+    "real-time",
+    "communication",
+    "queue",
+    "websocket",
+    "messaging"
+  ],
+  "author": "Kalpit Rathore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adashta/adashta/issues"
+  },
+  "homepage": "https://github.com/adashta/adashta#readme",
+  "dependencies": {
+    "adashta": "^1.0.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.4",
+    "typescript": "^5.3.3"
+  }
+}
