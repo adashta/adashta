@@ -1,4 +1,4 @@
 export interface IAdashtaConfigInterface {
-  host: string;
-  port: number;
+  adashtaSocketHost: string;
+  adashtaSocketPort: number;
 }
