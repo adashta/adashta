@@ -1,10 +1,9 @@
-import { IAdashtaChartInterface } from './chart.interface';
+import { IAdashtaConfigInterface } from '../init/init.interface';
+import { Adashta } from '../init/init.service';
+import { AdashtaWebSocket } from '../websocket/websocket.service';
 
-export class ChartService {
-  constructor() {}
-
-  public async produce(data: IAdashtaChartInterface) {
-    console.log('Charts Produce', data);
-    return 1;
+export class ChartService extends AdashtaWebSocket {
+  constructor(config: IAdashtaConfigInterface, adashta: Adashta) {
+    super(config, adashta);
   }
 }

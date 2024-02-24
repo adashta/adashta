@@ -9,35 +9,46 @@ import { isRelativeUrl } from '../../common/utils.service';
 dotenv.config();
 
 export class Adashta extends EventEmitter {
+  adashtaSocketHost; // TODO: Change `adashtaSocketHost` data type.
+  adashtaSocketPort; // TODO: Change `adashtaSocketPort` data type.
+
   constructor(config: IAdashtaConfigInterface) {
     super();
-    const adashtaSocketHost = config.adashtaSocketHost || 'localhost';
+    this.adashtaSocketHost = config.adashtaSocketHost || 'localhost';
 
-    if (adashtaSocketHost && !isRelativeUrl(adashtaSocketHost)) {
+    if (this.adashtaSocketHost && !isRelativeUrl(this.adashtaSocketHost)) {
       console.error('Adashta: Invalid socket host');
       process.exit(1);
     }
 
-    const adashtaSocketPort = config.adashtaSocketPort || 8080;
+    this.adashtaSocketPort = config.adashtaSocketPort || 8080;
 
-    if (adashtaSocketPort < 0 || adashtaSocketPort > 65535) {
+    if (this.adashtaSocketPort < 0 || this.adashtaSocketPort > 65535) {
       console.error('Adashta: Invalid socket port');
       process.exit(1);
     }
 
-    new AdashtaWebSocket(
+    const adashta = new AdashtaWebSocket(
       {
-        adashtaSocketHost,
-        adashtaSocketPort,
+        adashtaSocketHost: this.adashtaSocketHost,
+        adashtaSocketPort: this.adashtaSocketPort,
       },
       this,
     );
+
+    adashta.init();
 
     console.log('Adashta: Connection established');
   }
 
   public charts() {
-    return new ChartService();
+    return new ChartService(
+      {
+        adashtaSocketHost: this.adashtaSocketHost,
+        adashtaSocketPort: this.adashtaSocketPort,
+      },
+      this,
+    );
   }
 }
 
