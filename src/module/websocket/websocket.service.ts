@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { IAdashtaConfigInterface } from '../init/init.interface';
 import { Adashta } from '../init/init.service';
-import { adashtaClients } from '../../common/global.constant';
+import { adashtaClients } from '../../common/global.variables';
 
 // TODO: Keep descriptive variable name.
 export class AdashtaWebSocket {
@@ -24,6 +24,7 @@ export class AdashtaWebSocket {
       const clientId = uuidv4();
       (ws as any).clientId = clientId;
       adashtaClients[clientId] = ws;
+      console.log('this.adashtaClients====>', adashtaClients);
 
       this.adashtaEvent.emit('connection', clientId);
 
@@ -40,7 +41,9 @@ export class AdashtaWebSocket {
   }
 
   public async produce(clientId: any, data: any) {
-    console.log('HEHEHEHEHEHEHEHE');
+    console.log('YEYEYEYEYEYEY');
+    console.log('clientId===>', clientId);
+    console.log('this.adashtaClients===>', adashtaClients[clientId]);
     adashtaClients[clientId].send(JSON.stringify(data));
   }
 }
