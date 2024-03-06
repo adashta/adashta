@@ -9,29 +9,30 @@ import { isRelativeUrl } from '../../common/utils.service';
 dotenv.config();
 
 export class Adashta extends EventEmitter {
-  adashtaSocketHost; // TODO: Change `adashtaSocketHost` data type.
-  adashtaSocketPort; // TODO: Change `adashtaSocketPort` data type.
+  adashtaHost: string;
+  adashtaPort: number;
 
   constructor(config: IAdashtaConfigInterface) {
     super();
-    this.adashtaSocketHost = config.adashtaSocketHost || 'localhost';
 
-    if (this.adashtaSocketHost && !isRelativeUrl(this.adashtaSocketHost)) {
+    this.adashtaHost = config.adashtaHost || 'localhost';
+
+    if (this.adashtaHost && !isRelativeUrl(this.adashtaHost)) {
       console.error('Adashta: Invalid socket host');
       process.exit(1);
     }
 
-    this.adashtaSocketPort = config.adashtaSocketPort || 8080;
+    this.adashtaPort = config.adashtaPort || 8080;
 
-    if (this.adashtaSocketPort < 0 || this.adashtaSocketPort > 65535) {
+    if (this.adashtaPort < 0 || this.adashtaPort > 65535) {
       console.error('Adashta: Invalid socket port');
       process.exit(1);
     }
 
     const adashta = new AdashtaWebSocket(
       {
-        adashtaSocketHost: this.adashtaSocketHost,
-        adashtaSocketPort: this.adashtaSocketPort,
+        adashtaHost: this.adashtaHost,
+        adashtaPort: this.adashtaPort,
       },
       this,
     );
@@ -44,34 +45,10 @@ export class Adashta extends EventEmitter {
   public charts() {
     return new ChartService(
       {
-        adashtaSocketHost: this.adashtaSocketHost,
-        adashtaSocketPort: this.adashtaSocketPort,
+        adashtaHost: this.adashtaHost,
+        adashtaPort: this.adashtaPort,
       },
       this,
     );
   }
 }
-
-/* adashta.charts.produce({
-  topic: 'topic',
-  data: {
-    chartType: 'line',
-    chartData: {
-      ...
-    }
-  }
-});
-
-or
-
-adashta.produce({
-  topic: 'topic',
-  type: 'charts',
-  data: {
-    chartType: 'line',
-    chartData: {
-      ...
-    }
-  }
-});
-*/

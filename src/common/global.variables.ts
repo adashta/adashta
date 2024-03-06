@@ -1,1 +1,3 @@
-export const adashtaClients: any = {}; // TODO: Change `adashtaClients` data type and variable name
+import { IAdashtaConnectionInterface } from './global.interface';
+
+export const adashtaConnections: IAdashtaConnectionInterface = {};
