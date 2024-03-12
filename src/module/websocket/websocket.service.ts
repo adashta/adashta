@@ -16,7 +16,7 @@ export class AdashtaWebSocket {
     this.adashtaConfig = adashtaConfig;
   }
 
-  public async init() {
+  public async init(): Promise<void> {
     this.wss = new WebSocket.Server({
       host: this.adashtaConfig.adashtaHost,
       port: this.adashtaConfig.adashtaPort,
@@ -37,10 +37,5 @@ export class AdashtaWebSocket {
         console.log('Adashta: Client disconnected - ' + ws.clientId);
       });
     });
-  }
-
-  // TODO: Move produce function inside chart service.
-  public async produce(clientId: string, data: any) {
-    adashtaConnections[clientId].send(JSON.stringify(data));
   }
 }

@@ -42,7 +42,7 @@ export class Adashta extends EventEmitter {
     console.log('Adashta: Connection established');
   }
 
-  public charts() {
+  public charts(): ChartService {
     return new ChartService(
       {
         adashtaHost: this.adashtaHost,

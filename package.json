@@ -27,7 +27,9 @@
   "homepage": "https://github.com/adashta/adashta#readme",
   "dependencies": {
     "adashta": "1.0.1",
+    "chart.js": "4.4.2",
     "dotenv": "16.4.1",
+    "joi": "17.12.2",
     "uuid": "9.0.1",
     "ws": "8.16.0"
   },
