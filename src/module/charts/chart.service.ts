@@ -1,18 +1,17 @@
-import { ChartConfiguration } from 'chart.js';
-
 import { adashtaConnections } from '../../common/global.variables';
 import { IAdashtaConfigInterface } from '../init/init.interface';
 import { Adashta } from '../init/init.service';
 import { AdashtaWebSocket } from '../websocket/websocket.service';
-import { produceChartSchema } from './chart.validation';
+import { produceChartDataSchema } from './chart.validation';
+import { IProduceChartDataInterface } from './chart.interface';
 
 export class ChartService extends AdashtaWebSocket {
   constructor(config: IAdashtaConfigInterface, adashta: Adashta) {
     super(config, adashta);
   }
 
-  public async produce(clientId: string, data: ChartConfiguration): Promise<void> {
-    const validation = produceChartSchema.validate(data);
+  public async produce(clientId: string, data: IProduceChartDataInterface): Promise<void> {
+    const validation = produceChartDataSchema.validate(data);
 
     if (validation.error) {
       console.error('Adashta: Invalid chart data ==>', validation?.error?.details);

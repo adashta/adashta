@@ -1,8 +1,12 @@
 // TODO: Define chart data enums
 
 export enum EAdashtaChartTypeEnum {
-  LINE = 'line',
   BAR = 'bar',
+  LINE = 'line',
+  SCATTER = 'scatter',
+  BUBBLE = 'bubble',
   PIE = 'pie',
-  AREA = 'area',
+  DOUGHNUT = 'doughnut',
+  POLARAREA = 'polarArea',
+  RADAR = 'radar',
 }
