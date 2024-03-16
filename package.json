@@ -1,7 +1,7 @@
 {
   "name": "adashta",
-  "version": "1.0.4",
-  "description": "A real-time messaging tool based on NodeJS that will seamlessly transfer data between different devices.",
+  "version": "1.0.10",
+  "description": "A nodejs based user-friendly bidirectional real-time communication tool, powered by native web sockets, providing simplicity and scalability.",
   "main": "index.js",
   "scripts": {
     "build": "tsc"
@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/adashta/adashta#readme",
   "dependencies": {
-    "adashta": "1.0.1",
     "chart.js": "4.4.2",
     "dotenv": "16.4.1",
     "joi": "17.12.2",
