@@ -33,6 +33,7 @@ export class AdashtaWebSocket {
       this.adashtaEvent.emit('connection', clientId);
 
       ws.on('close', () => {
+        this.adashtaEvent.emit('disconnection', clientId);
         delete adashtaConnections[ws.clientId];
         console.log('Adashta: Client disconnected - ' + ws.clientId);
       });
