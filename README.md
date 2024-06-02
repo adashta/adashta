@@ -1,4 +1,8 @@
-# Adashta
+## Adashta
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://badge.fury.io/js/adashta.svg)](https://badge.fury.io/js/adashta)
+
 
 Adashta offers advanced SDKs for real-time communication, allowing developers to focus on their application's core business logic.
 
