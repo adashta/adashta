@@ -18,6 +18,11 @@ export class ChartService extends AdashtaWebSocket {
       return;
     }
 
+    if (!adashtaConnections[clientId]) {
+      console.error('Adashta: Client not connected');
+      return;
+    }
+
     adashtaConnections[clientId].send(JSON.stringify(data));
   }
 }
