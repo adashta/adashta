@@ -1,11 +1,11 @@
 {
   "name": "adashta",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "A nodejs based user-friendly bidirectional real-time communication tool, powered by native web sockets, providing simplicity and scalability.",
   "main": "index.js",
   "scripts": {
     "build": "tsc && npm run copy-files",
-    "copy-files": "cpx ./README.md dist"
+    "copy-files": "cpx ./README.md dist && cpx ./package.json dist"
   },
   "repository": {
     "type": "git",
