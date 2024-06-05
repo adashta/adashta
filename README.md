@@ -97,6 +97,10 @@ You need to pass the host and port of the Adashta server to the constructor of t
 </script>
 ```
 
+No additional frontend coding is required to render the chart. The chart will be automatically rendered in the specified query selector.
+
+This provides a seamless integration of real-time charts into your application without the need for complex frontend coding.
+
 ## SDKs
 
 ### Adashta Charts
@@ -179,9 +183,8 @@ const adashta = new Adashta({
 });
 
 const loadAdashta = async () => {
-  
+  const clientIdInterval = {};
   adashta.on('connection', async (clientId) => {
-
     const chart = {
       chartId: 'dummy-company-stock-chart',
       querySelector: '.chart',
@@ -219,42 +222,42 @@ const loadAdashta = async () => {
     };
 
     await adashta.charts().produce(clientId, chart);
-
-    setTimeout(() => {
-
       let days = 2;
-      setInterval(async () => {
+      clientIdInterval[clientId] = setInterval(async () => {
         chart.chartData.data.labels.push(`Day ${days}`);
         chart.chartData.data.datasets[0].data.push(getRandomInt(300, 800));
         await adashta.charts().produce(clientId, chart);
         days++;
       }, 2000);
-    }, 1000)
   });
 
   adashta.on('disconnection', async (clientId) => {
+    clearInterval(clientIdInterval[clientId]);
+    delete clientIdInterval[clientId];
     console.log('Client disconnected', clientId);
   });
 };
 
-function getRandomInt (min, max) {
+function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 loadAdashta();
 ```
+
 Here we are creating a chart with dummy data and sending it to the client.
 
 Generally, We will have a `chart` object containing the chart data and other configurations. We will pass this object to the `produce` method to send the chart to the client.
 
 We are using `setInterval` and `getRandomInt` methods to update the chart data every 2 seconds with random data. You can replace it with your own function to get the data from the database or any other source.
 
-#### Client
 
-No additional frontend coding is required to render the chart. The chart will be automatically rendered in the specified query selector.
-
-This provides a seamless integration of real-time charts into your application without the need for complex frontend coding.
-
+5. Run Your Adashta Server:
+    ```bash
+    node index.js
+    ```
+  
+6. Open Your HTML File in a Browser: HTTP server is required to serve the HTML file. You can use `http-server` or any other HTTP server of your choice.
 
 ## Contributing
 
