@@ -10,6 +10,9 @@ Adashta offers advanced SDKs for real-time communication, allowing developers to
 
 - **Adashta Charts**: Create real-time charts with minimal to no frontend coding required.
 
+<p align="center">
+  <img align="center" src="https://media.dev.to/cdn-cgi/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fvnq57rr0iq82w0b7b5c9.gif"/>
+</p>
 
 ### Installation and Initialization
 
